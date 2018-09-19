@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>social-network-fw</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+     <div id="app"></div>
+    <!--<h1>Bienvenida/o</h1>
+    <div v-if="authUser">
+    <h2>Registrada como {{authUser.email}}</h2>
+    <button @click="signOut">Log Out</button>
+    </div> -->
+
+  <!-- <div v-else>
+    <form @submit.prevent="register">
+      <h2>Register</h2>
+      <input type="email" v-model="email" placeholder="Ingresa tu correo">
+      <input type="password" v-model="password" placeholder="Ingresa una contraseña">
+      <button>Adelante!</button>
+    </form>
+
+    <form @submit.prevent="signIn">
+      <h2>Ingresa</h2>
+      <input type="email" v-model="email" placeholder="Ingresa tu correo">
+      <input type="password" v-model="password" placeholder="Ingresa una contraseña">
+      <button>Adelante!</button>
+    </form>
+
+  </div> -->
+    <!-- built files will be auto injected -->
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDjeoK99sQAUedhJS3azEub8XLU3dRwt0U",
+        authDomain: "social-network-vue.firebaseapp.com",
+        databaseURL: "https://social-network-vue.firebaseio.com",
+        projectId: "social-network-vue",
+        storageBucket: "social-network-vue.appspot.com",
+        messagingSenderId: "110494542483"
+      };
+      firebase.initializeApp(config);
+
+      new Vue({
+        el: '#app',
+
+        data: {
+
+          email: '',
+          password: '',
+          authUser: null
+        },
+
+        methods: {
+          register () {
+            firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+          }
+        },
+
+        signOut () {
+          firebase.auth().signOut()
+        },
+
+        signIn () {
+          firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        },
+
+        created (){
+          firebase.auth().onAuthStateChanged(user=>{this.authUser = user})
+
+
+        }
+      })
+
+
+    </script>
+  </body>
+</html>
