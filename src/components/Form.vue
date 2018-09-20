@@ -16,15 +16,22 @@
 </template>
 
 <script>
-export default {
-    data(){
-        return {
 
-        }
+export default {
+  data () {
+    return {
+      email: '',
+      password: ''
     }
+  }
 }
+
+// methods:{
+//           register(){
+//             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+//           }
+//         }
 </script>
 
 <style scoped>
-
 </style>

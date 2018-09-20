@@ -1,15 +1,21 @@
 import Vue from 'vue'
-import App from './App'
-import Form from './components/Form'
-// import router from './router'
+import App from './App.vue'
+import VueRouter from 'vue-router'
+import routes from './router/index'
+// import * as firebase from 'firebase'
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
-Vue.component('log-form', Form)
+Vue.use(VueRouter)
 
-/* eslint-disable no-new */
-new Vue({
+const router = new VueRouter({
+  routes
+})
+
+// Vue.component('log-form', Form)
+
+new Vue({ // eslint-disable-line no-new
+  router,
   el: '#app',
-  // router,
   render: h => h(App)
 })
