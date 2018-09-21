@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/index'
-// import * as firebase from 'firebase'
+import firebase from 'firebase'
 
 // Vue.config.productionTip = false
 
@@ -12,10 +12,18 @@ const router = new VueRouter({
   routes
 })
 
-// Vue.component('log-form', Form)
-
 new Vue({ // eslint-disable-line no-new
   router,
   el: '#app',
   render: h => h(App)
 })
+
+var config = {
+  apiKey: 'AIzaSyDjeoK99sQAUedhJS3azEub8XLU3dRwt0U',
+  authDomain: "social-network-vue.firebaseapp.com",
+  databaseURL: "https://social-network-vue.firebaseio.com",
+  projectId: "social-network-vue",
+  storageBucket: "social-network-vue.appspot.com",
+  messagingSenderId: "110494542483"
+}
+firebase.initializeApp(config)

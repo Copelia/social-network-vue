@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <log-form></log-form> -->
     <router-view></router-view>
   </div>
 </template>
@@ -19,5 +18,4 @@ export default {
 </script>
 
 <style>
-
 </style>
