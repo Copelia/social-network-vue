@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import routes from './router/index'
 import firebase from 'firebase'
 
-// Vue.config.productionTip = false
+Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 
@@ -20,10 +20,10 @@ new Vue({ // eslint-disable-line no-new
 
 var config = {
   apiKey: 'AIzaSyDjeoK99sQAUedhJS3azEub8XLU3dRwt0U',
-  authDomain: "social-network-vue.firebaseapp.com",
-  databaseURL: "https://social-network-vue.firebaseio.com",
-  projectId: "social-network-vue",
-  storageBucket: "social-network-vue.appspot.com",
-  messagingSenderId: "110494542483"
+  authDomain: 'social-network-vue.firebaseapp.com',
+  databaseURL: 'https://social-network-vue.firebaseio.com',
+  projectId: 'social-network-vue',
+  storageBucket: 'social-network-vue.appspot.com',
+  messagingSenderId: '110494542483'
 }
 firebase.initializeApp(config)
