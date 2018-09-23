@@ -1,22 +1,24 @@
 <template>
 <div>
     <p>{{ msg }}</p>
-    <a @click="signOut">Log Out</a>
+    <button v-on:click="logout">Cierra Sesión</button>
 </div>
 </template>
 
 <script>
-// import firebase from 'firebase/app'
+import firebase from 'firebase'
 export default {
   name: 'Home',
   data () {
     return {
-      msg: 'Probando'
+      msg: 'Bienvenido/a a Garnachapp'
     }
   },
   methods: {
-    signOut () {
-    //   firebase.auth().signOut().then(() => )
+    logout () {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
     }
   }
 }

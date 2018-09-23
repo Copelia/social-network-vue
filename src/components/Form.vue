@@ -4,7 +4,7 @@
       <h2>Ingresa a tu cuenta</h2>
       <input type="email" v-model="email" placeholder="Ingresa tu correo">
       <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
-      <button v-on:click="toHome">Adelante!</button>
+      <button>Adelante!</button>
       <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
     </form>
     <!-- <pre>
@@ -27,11 +27,7 @@ export default {
   methods: {
     login () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then((user) => alert('Usuario conectado'), (error) => console.error(error))
-    },
-
-    toHome () {
-      this.$router.replace('Home')
+        .then((user) => this.$router.replace('Home'), (error) => console.error(error))
     }
   }
 }

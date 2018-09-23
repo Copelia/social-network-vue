@@ -18,7 +18,8 @@ new Vue({ // eslint-disable-line no-new
   render: h => h(App)
 })
 
-var config = {
+// let app
+const config = {
   apiKey: 'AIzaSyDjeoK99sQAUedhJS3azEub8XLU3dRwt0U',
   authDomain: 'social-network-vue.firebaseapp.com',
   databaseURL: 'https://social-network-vue.firebaseio.com',
@@ -27,3 +28,13 @@ var config = {
   messagingSenderId: '110494542483'
 }
 firebase.initializeApp(config)
+
+// firebase.auth().onAuthStateChanged((user) => {
+//   if (!app) {
+//     app = new Vue({ // eslint-disable-line no-new
+//       router,
+//       el: '#app',
+//       render: h => h(App)
+//     })
+//   }
+// })
