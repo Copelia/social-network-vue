@@ -6,6 +6,8 @@
       <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
       <button>Adelante!</button>
       <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
+          <v-btn color="info">Info</v-btn>
+
     </form>
     <!-- <pre>
       {{ $data }}
@@ -35,4 +37,15 @@ export default {
 </script>
 
 <style scoped>
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  form > * {
+    display: block;
+  }
+
 </style>
