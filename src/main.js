@@ -12,6 +12,18 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  console.log(currentUser)
+  console.log(requiresAuth)
+
+  if (requiresAuth && !currentUser) next('form')
+  else if (!requiresAuth && currentUser) next('home')
+  else next()
+})
+
 new Vue({ // eslint-disable-line no-new
   router,
   el: '#app',
@@ -28,13 +40,3 @@ const config = {
   messagingSenderId: '110494542483'
 }
 firebase.initializeApp(config)
-
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (!app) {
-//     app = new Vue({ // eslint-disable-line no-new
-//       router,
-//       el: '#app',
-//       render: h => h(App)
-//     })
-//   }
-// })
