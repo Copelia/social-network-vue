@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <form @submit.prevent="login">
-      <h2>Ingresa a tu cuenta</h2>
-      <input type="email" v-model="email" placeholder="Ingresa tu correo">
-      <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
-      <button>Adelante!</button>
-      <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
-          <v-btn color="info">Info</v-btn>
-
-    </form>
-    <!-- <pre>
-      {{ $data }}
-    </pre> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-">
+        <form @submit.prevent="login">
+          <h3>Ingresa a tu cuenta</h3>
+          <input type="email" v-model="email" placeholder="Ingresa tu correo">
+          <input type="password" v-model="password" placeholder="Ingresa tu contraseña">
+          <button class="btn btn-warning">Adelante!</button>
+          <p>No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 

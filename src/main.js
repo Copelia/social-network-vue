@@ -15,10 +15,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   let currentUser = firebase.auth().currentUser
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-
-  console.log(currentUser)
-  console.log(requiresAuth)
-
   if (requiresAuth && !currentUser) next('form')
   else if (!requiresAuth && currentUser) next('home')
   else next()
@@ -30,7 +26,6 @@ new Vue({ // eslint-disable-line no-new
   render: h => h(App)
 })
 
-// let app
 const config = {
   apiKey: 'AIzaSyDjeoK99sQAUedhJS3azEub8XLU3dRwt0U',
   authDomain: 'social-network-vue.firebaseapp.com',
