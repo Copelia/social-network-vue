@@ -7,7 +7,9 @@
       <ul>
         <li v-for='(workshopName, key) in workshops' :key='key' >
           {{workshopName.name}}
-          <button>Edit</button>
+          <button class="btn btn-xs btn-info">Edit</button>
+          <button class="btn btn-xs btn-danger" @click='deleteWorkshop(key)'>Delete</button>
+          <input type="text" v-model='editing[key]' @keyup.enter='editWorkshop(key)' class="form-control">
         </li>
       </ul>
     <button class="btn btn-dark" v-on:click="logout">Cierra Sesión</button>
@@ -21,7 +23,8 @@ export default {
   data () {
     return {
       workshop: null,
-      workshops: {}
+      workshops: [],
+      editing: []
       // msg: 'Bienvenido/a a Garnachapp'
     }
   },
@@ -32,6 +35,17 @@ export default {
         .then((data) => [console.log(data)])
         .catch((error) => [console.log(error)])
     },
+    editWorkshop (key) {
+      firebase.database().ref('workshops/' + key).set({
+        name: this.editing[key]
+      })
+      this.editing = []
+    },
+
+    deleteWorkshop (key) {
+      firebase.database().ref('workshops/' + key).remove()
+    },
+
     logout () {
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
@@ -41,7 +55,6 @@ export default {
 
   created () {
     firebase.database().ref('workshops').on('value', (snapshot) => {
-      // console.log(snapshot.val())
       this.workshops = snapshot.val()
     })
   }
