@@ -3,7 +3,7 @@
     <!-- <h2 class="display-3">{{ msg }}</h2> -->
     <h3>Bike Workshops Network</h3>
     <p class="lead">Comparte y encuentra los talleres mecánicos rifados en la CDMX!</p>
-    <input type="text" v-model='workshop' @keyup.enter='created'>
+    <input type="text" v-model='workshop' @keyup.enter='addWorkshop'>
       <ul>
         <li v-for='(workshopName, key) in workshops' :key='key' >
           {{workshopName.name}}
@@ -32,18 +32,18 @@ export default {
         .then((data) => [console.log(data)])
         .catch((error) => [console.log(error)])
     },
-    created () {
-      firebase.database().ref('workshops').on('value', (snapshot) => {
-        // console.log(snapshot.val())
-        this.workshops = snapshot.val()
-      })
-    },
-
     logout () {
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
       })
     }
+  },
+
+  created () {
+    firebase.database().ref('workshops').on('value', (snapshot) => {
+      // console.log(snapshot.val())
+      this.workshops = snapshot.val()
+    })
   }
 }
 </script>

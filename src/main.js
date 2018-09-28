@@ -35,3 +35,5 @@ const config = {
   messagingSenderId: '110494542483'
 }
 firebase.initializeApp(config)
+
+window.firebase = firebase
